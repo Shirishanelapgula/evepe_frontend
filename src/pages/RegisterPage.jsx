@@ -7,7 +7,7 @@ import {VITE_BACKEND_URL} from "../App"
 
 const RegisterPage =()=>{
 
-    const [name,setName] = useState("")
+    const [username,setName] = useState("")
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const navigate = useNavigate()
@@ -16,7 +16,7 @@ const RegisterPage =()=>{
 
         e.preventDefault()
 
-        if (name === "" || email ==="" || password === ""){
+        if (username === "" || email ==="" || password === ""){
 
             alert("Please fill out all the input completely")
             return;
@@ -24,7 +24,7 @@ const RegisterPage =()=>{
         }
         try{
             console.log(VITE_BACKEND_URL)
-            const response = await axios.post(`${VITE_BACKEND_URL}/create`, {name: name, email: email , password : password})
+            const response = await axios.post(`${VITE_BACKEND_URL}/user/sign-up`, {username: username, email: email , password : password})
             console.log(response)
             toast.success(`Saved ${response.data.name} Details sucessfully`);
             if(response.status === 200){
@@ -54,7 +54,7 @@ const RegisterPage =()=>{
             <div className="space-y-2">
                 <div>
                     <label>Name</label>
-                    <input type="text" value={name} onChange={(e)=>setName(e.target.value)} className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter Name"/>
+                    <input type="text" value={username} onChange={(e)=>setName(e.target.value)} className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter Name"/>
                 </div>
                 <div>
                     <label>Email</label>
@@ -62,7 +62,7 @@ const RegisterPage =()=>{
                 </div>
                 <div>
                     <label>Password</label>
-                    <input type="text" value={password}  onChange={(e)=>setPassword(e.target.value)} className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter Password"/>
+                    <input type="password" value={password}  onChange={(e)=>setPassword(e.target.value)} className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter Password"/>
                 </div>
                 <div>
                     <button className="block w-full mt-6 bg-blue-700 text-white rounded-sm px-4 py-2 font-bold hover:bg-blue-600 hover:cursor-pointer">Register</button>
