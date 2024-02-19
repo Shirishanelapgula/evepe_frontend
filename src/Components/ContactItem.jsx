@@ -11,7 +11,7 @@ const ContactItem = (props) => {
   const { eachContact, getContacts } = props;
   const deleteContact = async (id) => {
     const result = await Swal.fire({
-      title: "Do you really want to delete the product?",
+      title: "Do you really want to delete the Details?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3885d6",
@@ -26,7 +26,7 @@ const ContactItem = (props) => {
             Authorization: `Bearer ${Cookies.get("jwtToken")}`,
           },
         });
-        toast.success("Deleted the product successfully");
+        toast.success("Deleted the User Details successfully");
         getContacts();
       } catch (error) {
         toast.error(error.message);

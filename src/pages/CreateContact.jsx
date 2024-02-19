@@ -53,7 +53,7 @@ const CreateContact = () => {
           },
         }
       );
-      toast.success(`Saved ${response.data.firstName} sucessfully`);
+      toast.success(`Saved ${response.data.firstName} Details sucessfully`);
       setIsLoading(false);
       navigate("/contacts");
     } catch (error) {

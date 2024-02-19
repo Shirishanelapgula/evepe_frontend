@@ -49,7 +49,7 @@ const UpdateContact = () => {
     }
   };
 
-  const updateProduct = async (e) => {
+  const updateUser = async (e) => {
     e.preventDefault();
     try {
       await axios.put(
@@ -61,7 +61,7 @@ const UpdateContact = () => {
           },
         }
       );
-      toast.success("Updated the product successfully");
+      toast.success("Updated the Details successfully");
       navigate("/contacts");
     } catch (error) {
       setIsLoading(false);
@@ -78,7 +78,7 @@ const UpdateContact = () => {
       <h2 className="font-semibold text-2xl mb-4 block text-center">
         Update a User
       </h2>
-      <form onSubmit={updateProduct}>
+      <form onSubmit={updateUser}>
         <div className="space-y-2">
           <div>
             <label>First Name</label>
