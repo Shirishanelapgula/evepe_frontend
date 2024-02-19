@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import axios from "axios";
@@ -37,11 +38,10 @@ const ContactItem = (props) => {
     <div className="bg-white rounded shadow-lg overflow-hidden">
       <div className="px-4 pt-2 pb-4">
         <h2 className="text font-semibold">
-          {" "}
           FirstName : {eachContact.firstName}
         </h2>
         <div className="test-sm font-semibold">
-          LastName: {eachContact.lastName}{" "}
+          LastName: {eachContact.lastName}
         </div>
         <div className="text-sm font-semibold">
           Designation: {eachContact.designation}
@@ -74,6 +74,21 @@ const ContactItem = (props) => {
       </div>
     </div>
   );
+};
+
+ContactItem.propTypes = {
+  eachContact: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    designation: PropTypes.string.isRequired,
+    company: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    department: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
+  }),
+  getContacts: PropTypes.func.isRequired,
 };
 
 export default ContactItem;
